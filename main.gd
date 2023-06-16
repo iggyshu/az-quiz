@@ -5,16 +5,6 @@ const HEX_TILE = preload("res://hexagon.tscn")
 
 @export var grid_size := 7
 
-var grid = [
-	[0],
-	[1],
-	[6],
-	[],
-	[],
-	[],
-	[]
-]
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_generate_grid()
@@ -24,10 +14,11 @@ func _process(delta):
 	pass
 
 func _generate_grid():
+	var tile_num = 1
+	
 	for x in range(1, grid_size + 1):
 		var tile_coordinates = $StartTilePosition.position
-		# tile_coordinates.x = x * (TILE_SIZE - 16) * cos(deg_to_rad(30))
-		#tile_coordinates.x = x * (TILE_SIZE - 16) * cos(deg_to_rad(30))
+		tile_coordinates.x += TILE_SIZE / 2
 		tile_coordinates.x -= TILE_SIZE / 2 * x
 		tile_coordinates.y += (TILE_SIZE - 8) * x * cos(deg_to_rad(30))
 		for y in range(x):
@@ -35,3 +26,5 @@ func _generate_grid():
 			add_child(tile)
 			tile.translate(Vector2(tile_coordinates.x, tile_coordinates.y))
 			tile_coordinates.x += TILE_SIZE
+			tile.set_value(str(tile_num))
+			tile_num += 1
