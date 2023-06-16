@@ -1,11 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://dcnuoosje5apo"]
+[gd_scene load_steps=11 format=3 uid="uid://dcnuoosje5apo"]
 
 [ext_resource type="Texture2D" uid="uid://h4m8iynwh1ot" path="res://art/hexagon_black.png" id="1_c1pcn"]
 [ext_resource type="Script" path="res://hexagon.gd" id="1_xwwt4"]
 [ext_resource type="Texture2D" uid="uid://dhnnj1nx4monh" path="res://art/hexagon_blue.png" id="2_26cjb"]
 [ext_resource type="Texture2D" uid="uid://endifvyluv17" path="res://art/hexagon_empty.png" id="3_0x3yg"]
 [ext_resource type="Texture2D" uid="uid://lnfscf0cjmlw" path="res://art/hexagon_red.png" id="4_1kud8"]
+[ext_resource type="Texture2D" uid="uid://fhpy0s1hcdun" path="res://art/hexagon_dark_yellow.png" id="4_i8kmm"]
 [ext_resource type="FontFile" uid="uid://dxc71cs4m0d58" path="res://fonts/Xolonium-Regular.ttf" id="5_ovq2p"]
+[ext_resource type="Texture2D" uid="uid://crs2550ux3b52" path="res://art/hexagon_yellow.png" id="6_a6x5a"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lhvxw"]
 animations = [{
@@ -27,6 +29,14 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("4_i8kmm")
+}],
+"loop": true,
+"name": &"dark_yellow",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("3_0x3yg")
 }],
 "loop": true,
@@ -40,15 +50,24 @@ animations = [{
 "loop": true,
 "name": &"red",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_a6x5a")
+}],
+"loop": true,
+"name": &"yellow",
+"speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_mm7gt"]
-radius = 32.9848
+[sub_resource type="CircleShape2D" id="CircleShape2D_u6frj"]
+radius = 25.2982
 
 [node name="Hexagon" type="Area2D"]
 script = ExtResource("1_xwwt4")
+metadata/_edit_group_ = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="TileColor" type="AnimatedSprite2D" parent="."]
 rotation = 1.5708
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_lhvxw")
@@ -73,4 +92,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_mm7gt")
+shape = SubResource("CircleShape2D_u6frj")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
