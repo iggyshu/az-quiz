@@ -1,0 +1,37 @@
+extends Node2D
+
+const TILE_SIZE := 64.0
+const HEX_TILE = preload("res://hexagon.tscn")
+
+@export var grid_size := 7
+
+var grid = [
+	[0],
+	[1],
+	[6],
+	[],
+	[],
+	[],
+	[]
+]
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	_generate_grid()
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+func _generate_grid():
+	for x in range(1, grid_size + 1):
+		var tile_coordinates = $StartTilePosition.position
+		# tile_coordinates.x = x * (TILE_SIZE - 16) * cos(deg_to_rad(30))
+		#tile_coordinates.x = x * (TILE_SIZE - 16) * cos(deg_to_rad(30))
+		tile_coordinates.x -= TILE_SIZE / 2 * x
+		tile_coordinates.y += (TILE_SIZE - 8) * x * cos(deg_to_rad(30))
+		for y in range(x):
+			var tile = HEX_TILE.instantiate()
+			add_child(tile)
+			tile.translate(Vector2(tile_coordinates.x, tile_coordinates.y))
+			tile_coordinates.x += TILE_SIZE
