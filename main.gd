@@ -5,10 +5,13 @@ const HEX_TILE = preload("res://hexagon.tscn")
 
 @export var grid_size := 7
 
+enum Team { BLUE, RED }
+var current_team = Team.BLUE
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_generate_grid()
-	$HUD.show_message("Blue team takes a turn")
+	$HUD.set_team("blue")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -32,6 +35,16 @@ func _generate_grid():
 			tile.selected.connect(_on_hex_tile_selected)
 			
 
-func _on_hex_tile_selected():
-	$HUD.show_question("What planet is between Venus and Mars?")
+func _on_hex_tile_selected(hex):
+	if current_team == Team.BLUE:
+		hex.set_color("blue")
+		current_team = Team.RED
+		$HUD.set_team("red")
+	elif current_team == Team.RED:
+		hex.set_color("red")
+		current_team = Team.BLUE
+		$HUD.set_team("blue")		
+	else:
+		print("Uknown team!")
+	
 

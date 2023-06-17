@@ -7,6 +7,8 @@ func _ready():
 	$MessageLabel.visible = false
 	$AnswerTextEdit.visible = false
 	$QuestionLabel.visible = false
+	$TeamBlueLabel.visible = false
+	$TeamRedLabel.visible = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -31,4 +33,9 @@ func show_question(question):
 
 
 func set_team(team):
-	pass
+	if team == "blue":
+		$TeamBlueLabel.visible = true
+		$TeamRedLabel.visible = false
+	elif team == "red":
+		$TeamBlueLabel.visible = false
+		$TeamRedLabel.visible = true

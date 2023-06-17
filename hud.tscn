@@ -72,26 +72,23 @@ theme_override_font_sizes/font_size = 24
 text = "Message"
 horizontal_alignment = 1
 
-[node name="TeamBlueLabel" type="Label" parent="."]
-offset_left = 30.0
-offset_top = 10.0
-offset_right = 104.0
-offset_bottom = 52.0
-theme_override_colors/font_color = Color(0, 0, 1, 1)
-theme_override_fonts/font = ExtResource("1_2vvjq")
-theme_override_font_sizes/font_size = 32
+[node name="TeamBlueLabel" type="RichTextLabel" parent="."]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 120.0
+offset_bottom = 62.0
+theme_override_colors/default_color = Color(0, 0, 1, 1)
+theme_override_fonts/normal_font = ExtResource("1_2vvjq")
+theme_override_font_sizes/normal_font_size = 32
 text = "Blue"
 
-[node name="TeamRedLabel" type="Label" parent="."]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -100.0
-offset_top = 10.0
-offset_right = -26.0
-offset_bottom = 52.0
-grow_horizontal = 0
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_2vvjq")
-theme_override_font_sizes/font_size = 32
+[node name="TeamRedLabel" type="RichTextLabel" parent="."]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 120.0
+offset_bottom = 62.0
+size_flags_horizontal = 8
+theme_override_colors/default_color = Color(1, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("1_2vvjq")
+theme_override_font_sizes/normal_font_size = 32
 text = "Red"

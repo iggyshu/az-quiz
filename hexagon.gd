@@ -13,13 +13,14 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if is_selected:
+	if is_selected and not is_checked:
 		$TileColor.play("dark_yellow")
 
 func set_value(value):
 	$NumberLabel.text = value
 
 func set_color(color):
+	is_checked = true
 	$TileColor.play(color)
 
 
@@ -35,4 +36,4 @@ func _on_mouse_exited():
 func _on_input_event(viewport, event, shape_idx):
 	if (not is_selected and event is InputEventMouseButton and event.pressed):
 		is_selected = true
-		selected.emit()
+		selected.emit(self)
