@@ -1,10 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://cepwqiqvbq2ke"]
+[gd_scene load_steps=3 format=3 uid="uid://cepwqiqvbq2ke"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_362fv"]
+[ext_resource type="PackedScene" uid="uid://cl42fmt8tpyji" path="res://hud.tscn" id="2_ejytc"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_362fv")
 metadata/_edit_group_ = true
 
 [node name="StartTilePosition" type="Marker2D" parent="."]
-position = Vector2(640, 140)
+position = Vector2(640, 80)
+
+[node name="HUD" parent="." instance=ExtResource("2_ejytc")]

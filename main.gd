@@ -8,6 +8,7 @@ const HEX_TILE = preload("res://hexagon.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_generate_grid()
+	$HUD.show_message("Blue team takes a turn")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -28,3 +29,9 @@ func _generate_grid():
 			tile_coordinates.x += TILE_SIZE
 			tile.set_value(str(tile_num))
 			tile_num += 1
+			tile.selected.connect(_on_hex_tile_selected)
+			
+
+func _on_hex_tile_selected():
+	$HUD.show_question("What planet is between Venus and Mars?")
+
