@@ -3,6 +3,7 @@ extends Area2D
 var is_checked = false
 var is_black = false
 var is_selected = false
+var value = 0
 
 signal selected
 
@@ -17,7 +18,8 @@ func _process(delta):
 		$TileColor.play("dark_yellow")
 
 func set_value(value):
-	$NumberLabel.text = value
+	$NumberLabel.text = str(value)
+	self.value = value
 
 func set_color(color):
 	is_checked = true
