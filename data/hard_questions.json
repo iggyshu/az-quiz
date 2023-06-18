@@ -1,0 +1,116 @@
+{
+  "questions": [
+	{
+	  "question_text": "Is the Earth flat?",
+	  "is_true": false
+	},
+	{
+	  "question_text": "Can penguins fly?",
+	  "is_true": false
+	},
+	{
+	  "question_text": "Do plants need sunlight to grow?",
+	  "is_true": true
+	},
+	{
+	  "question_text": "Is the moon bigger than the Earth?",
+	  "is_true": false
+	},
+	{
+	  "question_text": "Are dolphins mammals?",
+	  "is_true": true
+	},
+	{
+	  "question_text": "Is a tomato a fruit?",
+	  "is_true": true
+	},
+	{
+	  "question_text": "Can humans breathe underwater?",
+	  "is_true": false
+	},
+	{
+	  "question_text": "Is the sun a star?",
+	  "is_true": true
+	},
+	{
+	  "question_text": "Is the Great Wall of China visible from space?",
+	  "is_true": false
+	},
+	{
+	  "question_text": "Do birds have teeth?",
+	  "is_true": false
+	},
+	{
+	  "question_text": "Is it possible to travel faster than the speed of light?",
+	  "is_true": false
+	},
+	{
+	  "question_text": "Is chocolate made from beans?",
+	  "is_true": true
+	},
+	{
+	  "question_text": "Is the Sahara Desert the largest desert in the world?",
+	  "is_true": true
+	},
+	{
+	  "question_text": "Are spiders insects?",
+	  "is_true": false
+	},
+	{
+	  "question_text": "Is the Statue of Liberty located in New York City?",
+	  "is_true": true
+	},
+	{
+	  "question_text": "Can fish breathe underwater?",
+	  "is_true": true
+	},
+	{
+	  "question_text": "Is the Atlantic Ocean the largest ocean in the world?",
+	  "is_true": false
+	},
+	{
+	  "question_text": "Are elephants the largest land animals?",
+	  "is_true": true
+	},
+	{
+	  "question_text": "Is the planet Mars closer to the Sun than the Earth?",
+	  "is_true": false
+	},
+	{
+	  "question_text": "Can dogs see in color?",
+	  "is_true": true
+	},
+	{
+	  "question_text": "Is lightning hotter than the surface of the Sun?",
+	  "is_true": true
+	},
+	{
+	  "question_text": "Are diamonds made from coal?",
+	  "is_true": true
+	},
+	{
+	  "question_text": "Is the Eiffel Tower located in London?",
+	  "is_true": false
+	},
+	{
+	  "question_text": "Can snakes hear?",
+	  "is_true": true
+	},
+	{
+	  "question_text": "Is the speed of sound faster than the speed of light?",
+	  "is_true": false
+	},
+	{
+	  "question_text": "Do ants sleep?",
+	  "is_true": false
+	},
+	{
+	  "question_text": "Is the Pacific Ocean the smallest ocean in the world?",
+	  "is_true": false
+	},
+	{
+	  "question_text": "Is the human brain a muscle?",
+	  "is_true": false
+	}
+  ]
+}

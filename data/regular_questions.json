@@ -1,0 +1,149 @@
+{
+  "questions": [
+	{
+	  "question_text": "What is the capital of France?",
+	  "answer_text": "Paris",
+	  "hint_text": "P"
+	},
+	{
+	  "question_text": "How many legs does a cat have?",
+	  "answer_text": "Four",
+	  "hint_text": "F"
+	},
+	{
+	  "question_text": "What color is a ripe banana?",
+	  "answer_text": "Yellow",
+	  "hint_text": "Y"
+	},
+	{
+	  "question_text": "What is the opposite of hot?",
+	  "answer_text": "Cold",
+	  "hint_text": "C"
+	},
+	{
+	  "question_text": "How many planets are there in our solar system?",
+	  "answer_text": "Eight",
+	  "hint_text": "E"
+	},
+	{
+	  "question_text": "Which animal barks?",
+	  "answer_text": "Dog",
+	  "hint_text": "D"
+	},
+	{
+	  "question_text": "What is the tallest mammal on Earth?",
+	  "answer_text": "Giraffe",
+	  "hint_text": "G"
+	},
+	{
+	  "question_text": "What is the color of the sun?",
+	  "answer_text": "Yellow",
+	  "hint_text": "Y"
+	},
+	{
+	  "question_text": "What is the largest planet in our solar system?",
+	  "answer_text": "Jupiter",
+	  "hint_text": "J"
+	},
+	{
+	  "question_text": "What animal says 'quack'?",
+	  "answer_text": "Duck",
+	  "hint_text": "D"
+	},
+	{
+	  "question_text": "What is the capital of Spain?",
+	  "answer_text": "Madrid",
+	  "hint_text": "M"
+	},
+	{
+	  "question_text": "How many sides does a triangle have?",
+	  "answer_text": "Three",
+	  "hint_text": "T"
+	},
+	{
+	  "question_text": "What is the color of grass?",
+	  "answer_text": "Green",
+	  "hint_text": "G"
+	},
+	{
+	  "question_text": "What animal is known for swinging on trees?",
+	  "answer_text": "Monkey",
+	  "hint_text": "M"
+	},
+	{
+	  "question_text": "What is the capital of the United States?",
+	  "answer_text": "Washington D.C.",
+	  "hint_text": "WDC"
+	},
+	{
+	  "question_text": "What is the color of the sky on a clear day?",
+	  "answer_text": "Blue",
+	  "hint_text": "B"
+	},
+	{
+	  "question_text": "How many days are there in a week?",
+	  "answer_text": "Seven",
+	  "hint_text": "S"
+	},
+	{
+	  "question_text": "What animal meows?",
+	  "answer_text": "Cat",
+	  "hint_text": "C"
+	},
+	{
+	  "question_text": "What is the capital of Australia?",
+	  "answer_text": "Canberra",
+	  "hint_text": "C"
+	},
+	{
+	  "question_text": "What is the color of the ocean?",
+	  "answer_text": "Blue",
+	  "hint_text": "B"
+	},
+	{
+	  "question_text": "What animal is known for its long trunk?",
+	  "answer_text": "Elephant",
+	  "hint_text": "E"
+	},
+	{
+	  "question_text": "What is the largest ocean on Earth?",
+	  "answer_text": "Pacific",
+	  "hint_text": "P"
+	},
+	{
+	  "question_text": "What is the color of an apple?",
+	  "answer_text": "Red",
+	  "hint_text": "R"
+	},
+	{
+	  "question_text": "How many wheels does a bicycle have?",
+	  "answer_text": "Two",
+	  "hint_text": "T"
+	},
+	{
+	  "question_text": "What animal chirps?",
+	  "answer_text": "Bird",
+	  "hint_text": "B"
+	},
+	{
+	  "question_text": "What is the capital of China?",
+	  "answer_text": "Beijing",
+	  "hint_text": "B"
+	},
+	{
+	  "question_text": "What is the color of a lemon?",
+	  "answer_text": "Yellow",
+	  "hint_text": "Y"
+	},
+	{
+	  "question_text": "What animal says 'moo'?",
+	  "answer_text": "Cow",
+	  "hint_text": "C"
+	},
+	{
+	  "question_text": "What is the tallest mountain in the world?",
+	  "answer_text": "Mount Everest",
+	  "hint_text": "ME"
+	}
+  ]
+}
