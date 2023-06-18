@@ -3,10 +3,12 @@ extends Node2D
 const TILE_SIZE := 64.0
 const HEX_TILE = preload("res://hexagon.tscn")
 const grid_size := 7
+const BLUE = "blue"
+const RED = "red"
 
-enum Team { BLUE, RED }
-var current_team = Team.BLUE
+var current_team = BLUE
 
+# Graph BFS variables:
 var adjacency_list = {}
 var team_tiles = {
 	"blue" = [],
@@ -17,34 +19,12 @@ var team_tiles = {
 func _ready():
 	_generate_grid_ui()
 	_generate_graph()
-	$HUD.set_team("blue")
+	$HUD.set_team(BLUE)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 	
-
-# Function to add an edge between 2 hexagons in the adjacency list
-func _add_edge(node1, node2):
-	if node1 in adjacency_list and node2 not in adjacency_list[node1]["neighbors"]:
-		adjacency_list[node1]["neighbors"].append(node2)
-	else:
-		var node = {
-			"id" = node1,
-			"taken_by" = null,
-			"neighbors" = [node2]
-		}
-		adjacency_list[node1] = node
-	
-	if node2 in adjacency_list and node1 not in adjacency_list[node2]["neighbors"]:
-		adjacency_list[node2]["neighbors"].append(node1)
-	else:
-		var node = {
-			"id" = node2,
-			"taken_by" = null,
-			"neighbors" = [node1]
-		}
-		adjacency_list[node2] = node
 
 func _generate_graph():
 	
@@ -115,6 +95,7 @@ func _check_path_exists(team):
 	# Path does not exist
 	return false 
 
+
 func _generate_grid_ui():
 	var tile_num = 1
 	
@@ -134,24 +115,24 @@ func _generate_grid_ui():
 
 
 func _on_hex_tile_selected(hex):
-	if current_team == Team.BLUE:
-		hex.set_color("blue")
-		team_tiles["blue"].append(hex.value)
+	if current_team == BLUE:
+		hex.set_color(BLUE)
+		team_tiles[BLUE].append(hex.value)
 		
-		if _check_path_exists("blue"):
+		if _check_path_exists(BLUE):
 			$HUD.show_message("Blue team won!")
 		
-		current_team = Team.RED
-		$HUD.set_team("red")
-	elif current_team == Team.RED:
-		hex.set_color("red")
-		team_tiles["red"].append(hex.value)
+		current_team = RED
+		$HUD.set_team(RED)
+	elif current_team == RED:
+		hex.set_color(RED)
+		team_tiles[RED].append(hex.value)
 		
-		if _check_path_exists("red"):
+		if _check_path_exists(RED):
 			$HUD.show_message("Red team won!")
 		
-		current_team = Team.BLUE
-		$HUD.set_team("blue")		
+		current_team = BLUE
+		$HUD.set_team(BLUE)
 	else:
 		print("Uknown team!")
 	
