@@ -128,8 +128,13 @@ func _generate_grid_ui():
 
 
 func _on_hex_tile_selected(hex):
+	if current_question != null:
+		# we don't want to allow players select different questions after making initial choice
+		return
+
 	current_hex = hex
 	second_attempt = false
+	hex.set_selected()
 	if not hex.is_black:
 		# empty hex, proceed to ask a regular question
 		current_question = regular_questions.pop_at(-1)
@@ -145,24 +150,26 @@ func claim_hex_tile(team):
 		current_hex.set_team_color(BLUE)
 		team_tiles[BLUE].append(current_hex.value)
 
+		$HUD.show_message("Blue team claims the tile!")
+
 		if _check_path_exists(BLUE):
 			$HUD.show_message("Blue team won!")
 
 		current_team = RED
 		$HUD.set_team(RED)
-	elif team == RED:
+	else:
 		current_hex.set_team_color(RED)
 		team_tiles[RED].append(current_hex.value)
+
+		$HUD.show_message("Red team claims the tile!")
 
 		if _check_path_exists(RED):
 			$HUD.show_message("Red team won!")
 
 		current_team = BLUE
 		$HUD.set_team(BLUE)
-	else:
-		print("Uknown team!")
 
-
+	current_question = null
 
 
 func _parse_json(text):
@@ -177,6 +184,8 @@ func _read_json_file(file_path):
 
 
 func _on_hard_question_answer(answer: bool):
+	$HUD.hide_controls()
+
 	if current_question.is_true == answer:
 		claim_hex_tile(current_team)
 	else:
@@ -185,13 +194,12 @@ func _on_hard_question_answer(answer: bool):
 			claim_hex_tile(RED)
 		else:
 			claim_hex_tile(BLUE)
-		$HUD.hide_controls()
 
 
 func _on_regular_question_answer(answer: String):
 	if current_question.answer_text.to_lower() == answer.to_lower():
-		claim_hex_tile(current_team)
 		$HUD.hide_controls()
+		claim_hex_tile(current_team)
 	elif not second_attempt:
 		# if the first team answered the question incorrectly
 		# the second team has a chance to answer

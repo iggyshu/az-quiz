@@ -33,6 +33,9 @@ func set_black():
 	is_selected = false
 	$TileColor.play("black")
 
+func set_selected():
+	is_selected = true
+
 func _on_mouse_entered():
 	if not is_selected:
 		$TileColor.play("yellow")
@@ -44,5 +47,4 @@ func _on_mouse_exited():
 
 func _on_input_event(viewport, event, shape_idx):
 	if (not is_selected and event is InputEventMouseButton and event.pressed):
-		is_selected = true
 		selected.emit(self)
