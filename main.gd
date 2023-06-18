@@ -15,8 +15,17 @@ var team_tiles = {
 	"red" = []
 }
 
+# Question pools
+var regular_questions = null
+var hard_questions = null
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	regular_questions = _read_json_file("res://data/regular_questions.json")["questions"]
+	hard_questions = _read_json_file("res://data/hard_questions.json")["questions"]
+	regular_questions.shuffle()
+	hard_questions.shuffle()
+	
 	_generate_grid_ui()
 	_generate_graph()
 	$HUD.set_team(BLUE)
@@ -137,3 +146,13 @@ func _on_hex_tile_selected(hex):
 		print("Uknown team!")
 	
 
+
+func _parse_json(text):
+	return JSON.parse_string(text)
+
+
+func _read_json_file(file_path):
+	var file = FileAccess.open(file_path, FileAccess.READ)
+	var content_as_text = file.get_as_text()
+	var content_as_dictionary = _parse_json(content_as_text)
+	return content_as_dictionary
