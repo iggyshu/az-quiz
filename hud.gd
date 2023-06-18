@@ -7,7 +7,7 @@ signal hard_question_answer
 func _ready():
 	$TeamBlueLabel.visible = false
 	$TeamRedLabel.visible = false
-	_hide_controls()
+	hide_controls()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -15,7 +15,7 @@ func _process(delta):
 	pass
 
 
-func _hide_controls():
+func hide_controls():
 	$SubmitButton.visible = false
 	$MessageLabel.visible = false
 	$AnswerTextEdit.visible = false
@@ -28,20 +28,21 @@ func show_message(message):
 	$MessageLabel.text = message
 	$MessageLabel.visible = true
 
-	
-func show_regular_question(question_text, hint_text):
-	_hide_controls()
-	$QuestionLabel.text = question_text
-	$MessageLabel.text = hint_text
+
+func show_regular_question(question):
+	hide_controls()
+	$QuestionLabel.text = "Question: " + question.question_text
+	$MessageLabel.text = "Hint: " + question.hint_text
 	$QuestionLabel.visible = true
 	$MessageLabel.visible = true
 	$SubmitButton.visible = true
 	$AnswerTextEdit.visible = true
-	
+	$AnswerTextEdit.text = ""
 
-func show_hard_question(question_text):
-	_hide_controls()
-	$QuestionLabel.text = question_text
+
+func show_hard_question(question):
+	hide_controls()
+	$QuestionLabel.text = "Question: " + question.question_text
 	$QuestionLabel.visible = true
 	$YesButton.visible = true
 	$NoButton.visible = true

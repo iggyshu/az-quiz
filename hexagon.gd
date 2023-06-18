@@ -16,6 +16,8 @@ func _ready():
 func _process(delta):
 	if is_selected and not is_team_colored:
 		$TileColor.play("dark_yellow")
+	elif is_black:
+		$TileColor.play("black")
 
 func set_value(value):
 	$NumberLabel.text = str(value)
@@ -23,10 +25,12 @@ func set_value(value):
 
 func set_team_color(color):
 	is_team_colored = true
+	is_black = false
 	$TileColor.play(color)
 
 func set_black():
 	is_black = true
+	is_selected = false
 	$TileColor.play("black")
 
 func _on_mouse_entered():

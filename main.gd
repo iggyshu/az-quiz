@@ -18,6 +18,10 @@ var team_tiles = {
 # Question pools
 var regular_questions = null
 var hard_questions = null
+var current_question = null
+
+var current_hex = null
+var second_attempt = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -25,7 +29,7 @@ func _ready():
 	hard_questions = _read_json_file("res://data/hard_questions.json")["questions"]
 	regular_questions.shuffle()
 	hard_questions.shuffle()
-	
+
 	_generate_grid_ui()
 	_generate_graph()
 	$HUD.set_team(BLUE)
@@ -33,10 +37,10 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
-	
+
 
 func _generate_graph():
-	
+
 	adjacency_list = {
 		1: [2, 3],
 		2: [1, 3, 4, 5],
@@ -84,30 +88,30 @@ func _check_path_exists(team):
 			while queue:
 				var hex = queue.pop_at(0)
 				visited[hex] = true
-				
+
 				if hex in [1, 3, 6, 10, 15, 21, 28]:
 					visited_right_side = true
-				
+
 				if hex in [22, 23, 24, 25, 26, 27, 28]:
 					visited_bottom_side = true
-				
+
 				if visited_right_side and visited_bottom_side:
 					print("Found path:")
 					print(visited)
 					return true
-				
+
 				for neighbor in adjacency_list[hex]:
 					if neighbor not in visited and neighbor not in queue:
 						if neighbor in team_tiles[team]:
 							queue.append(neighbor)
-	
+
 	# Path does not exist
-	return false 
+	return false
 
 
 func _generate_grid_ui():
 	var tile_num = 1
-	
+
 	for x in range(1, grid_size + 1):
 		var tile_coordinates = $StartTilePosition.position
 		tile_coordinates.x += TILE_SIZE / 2
@@ -124,27 +128,41 @@ func _generate_grid_ui():
 
 
 func _on_hex_tile_selected(hex):
-	if current_team == BLUE:
-		hex.set_team_color(BLUE)
-		team_tiles[BLUE].append(hex.value)
-		
+	current_hex = hex
+	second_attempt = false
+	if not hex.is_black:
+		# empty hex, proceed to ask a regular question
+		current_question = regular_questions.pop_at(-1)
+		$HUD.show_regular_question(current_question)
+	else:
+		# black hex was selected, display a hard question
+		current_question = hard_questions.pop_at(-1)
+		$HUD.show_hard_question(current_question)
+
+
+func claim_hex_tile(team):
+	if team == BLUE:
+		current_hex.set_team_color(BLUE)
+		team_tiles[BLUE].append(current_hex.value)
+
 		if _check_path_exists(BLUE):
 			$HUD.show_message("Blue team won!")
-		
+
 		current_team = RED
 		$HUD.set_team(RED)
-	elif current_team == RED:
-		hex.set_team_color(RED)
-		team_tiles[RED].append(hex.value)
-		
+	elif team == RED:
+		current_hex.set_team_color(RED)
+		team_tiles[RED].append(current_hex.value)
+
 		if _check_path_exists(RED):
 			$HUD.show_message("Red team won!")
-		
+
 		current_team = BLUE
 		$HUD.set_team(BLUE)
 	else:
 		print("Uknown team!")
-	
+
+
 
 
 func _parse_json(text):
@@ -156,3 +174,37 @@ func _read_json_file(file_path):
 	var content_as_text = file.get_as_text()
 	var content_as_dictionary = _parse_json(content_as_text)
 	return content_as_dictionary
+
+
+func _on_hard_question_answer(answer: bool):
+	if current_question.is_true == answer:
+		claim_hex_tile(current_team)
+	else:
+		# the opposite team claims the tile
+		if current_team == BLUE:
+			claim_hex_tile(RED)
+		else:
+			claim_hex_tile(BLUE)
+		$HUD.hide_controls()
+
+
+func _on_regular_question_answer(answer: String):
+	if current_question.answer_text.to_lower() == answer.to_lower():
+		claim_hex_tile(current_team)
+		$HUD.hide_controls()
+	elif not second_attempt:
+		# if the first team answered the question incorrectly
+		# the second team has a chance to answer
+		$HUD.show_regular_question(current_question)
+		if current_team == BLUE:
+			current_team = RED
+			$HUD.set_team(RED)
+		else:
+			current_team = BLUE
+			$HUD.set_team(BLUE)
+		second_attempt = true
+	else:
+		# no team answered the question correctly
+		# make the tile black
+		current_hex.set_black()
+		$HUD.hide_controls()

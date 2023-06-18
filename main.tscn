@@ -11,3 +11,6 @@ metadata/_edit_group_ = true
 position = Vector2(640, 80)
 
 [node name="HUD" parent="." instance=ExtResource("2_ejytc")]
+
+[connection signal="hard_question_answer" from="HUD" to="." method="_on_hard_question_answer"]
+[connection signal="regular_question_answer" from="HUD" to="." method="_on_regular_question_answer"]
