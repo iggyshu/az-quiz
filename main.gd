@@ -216,3 +216,11 @@ func _on_regular_question_answer(answer: String):
 		# make the tile black
 		current_hex.set_black()
 		$HUD.hide_controls()
+		$HUD.show_message("Answer: " + current_question.answer_text)
+		current_question = null
+		if current_team == BLUE:
+			current_team = RED
+			$HUD.set_team(RED)
+		else:
+			current_team = BLUE
+			$HUD.set_team(BLUE)
