@@ -37,7 +37,6 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("1_2vvjq")
 theme_override_font_sizes/font_size = 24
-placeholder_text = "E____"
 
 [node name="SubmitButton" type="Button" parent="."]
 anchors_preset = 3
@@ -55,17 +54,48 @@ theme_override_fonts/font = ExtResource("1_2vvjq")
 theme_override_font_sizes/font_size = 24
 text = "Submit"
 
-[node name="MessageLabel" type="Label" parent="."]
-anchors_preset = 12
+[node name="YesButton" type="Button" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -16.0
-offset_top = -246.0
-offset_right = -16.0
-offset_bottom = -204.0
-grow_horizontal = 2
+offset_left = -896.0
+offset_top = -80.0
+offset_right = -704.0
+offset_bottom = -32.0
+grow_horizontal = 0
 grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_2vvjq")
+theme_override_font_sizes/font_size = 24
+text = "Yes
+"
+
+[node name="NoButton" type="Button" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -592.0
+offset_top = -80.0
+offset_right = -400.0
+offset_bottom = -32.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_2vvjq")
+theme_override_font_sizes/font_size = 24
+text = "No"
+
+[node name="MessageLabel" type="Label" parent="."]
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = 144.0
+offset_bottom = 177.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_2vvjq")
 theme_override_font_sizes/font_size = 24
@@ -92,3 +122,7 @@ theme_override_colors/default_color = Color(1, 0.501961, 0.501961, 1)
 theme_override_fonts/normal_font = ExtResource("1_2vvjq")
 theme_override_font_sizes/normal_font_size = 32
 text = "Red"
+
+[connection signal="pressed" from="SubmitButton" to="." method="_on_submit_button_pressed"]
+[connection signal="pressed" from="YesButton" to="." method="_on_yes_button_pressed"]
+[connection signal="pressed" from="NoButton" to="." method="_on_no_button_pressed"]

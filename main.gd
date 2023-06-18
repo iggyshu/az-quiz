@@ -125,7 +125,7 @@ func _generate_grid_ui():
 
 func _on_hex_tile_selected(hex):
 	if current_team == BLUE:
-		hex.set_color(BLUE)
+		hex.set_team_color(BLUE)
 		team_tiles[BLUE].append(hex.value)
 		
 		if _check_path_exists(BLUE):
@@ -134,7 +134,7 @@ func _on_hex_tile_selected(hex):
 		current_team = RED
 		$HUD.set_team(RED)
 	elif current_team == RED:
-		hex.set_color(RED)
+		hex.set_team_color(RED)
 		team_tiles[RED].append(hex.value)
 		
 		if _check_path_exists(RED):

@@ -1,14 +1,13 @@
 extends CanvasLayer
 
+signal regular_question_answer
+signal hard_question_answer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$SubmitButton.visible = false
-	$MessageLabel.visible = false
-	$AnswerTextEdit.visible = false
-	$QuestionLabel.visible = false
 	$TeamBlueLabel.visible = false
 	$TeamRedLabel.visible = false
+	_hide_controls()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -16,20 +15,36 @@ func _process(delta):
 	pass
 
 
+func _hide_controls():
+	$SubmitButton.visible = false
+	$MessageLabel.visible = false
+	$AnswerTextEdit.visible = false
+	$QuestionLabel.visible = false
+	$YesButton.visible = false
+	$NoButton.visible = false
+
+
 func show_message(message):
 	$MessageLabel.text = message
 	$MessageLabel.visible = true
-	$SubmitButton.visible = false
-	$AnswerTextEdit.visible = false
-	$QuestionLabel.visible = false
 
 	
-func show_question(question):
-	$QuestionLabel.text = question
+func show_regular_question(question_text, hint_text):
+	_hide_controls()
+	$QuestionLabel.text = question_text
+	$MessageLabel.text = hint_text
 	$QuestionLabel.visible = true
+	$MessageLabel.visible = true
 	$SubmitButton.visible = true
 	$AnswerTextEdit.visible = true
-	$MessageLabel.visible = false
+	
+
+func show_hard_question(question_text):
+	_hide_controls()
+	$QuestionLabel.text = question_text
+	$QuestionLabel.visible = true
+	$YesButton.visible = true
+	$NoButton.visible = true
 
 
 func set_team(team):
@@ -39,3 +54,15 @@ func set_team(team):
 	elif team == "red":
 		$TeamBlueLabel.visible = false
 		$TeamRedLabel.visible = true
+
+
+func _on_submit_button_pressed():
+	regular_question_answer.emit($AnswerTextEdit.text)
+
+
+func _on_yes_button_pressed():
+	hard_question_answer.emit(true)
+
+
+func _on_no_button_pressed():
+	hard_question_answer.emit(false)

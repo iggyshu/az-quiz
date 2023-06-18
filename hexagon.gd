@@ -1,6 +1,6 @@
 extends Area2D
 
-var is_checked = false
+var is_team_colored = false
 var is_black = false
 var is_selected = false
 var value = 0
@@ -14,17 +14,20 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if is_selected and not is_checked:
+	if is_selected and not is_team_colored:
 		$TileColor.play("dark_yellow")
 
 func set_value(value):
 	$NumberLabel.text = str(value)
 	self.value = value
 
-func set_color(color):
-	is_checked = true
+func set_team_color(color):
+	is_team_colored = true
 	$TileColor.play(color)
 
+func set_black():
+	is_black = true
+	$TileColor.play("black")
 
 func _on_mouse_entered():
 	if not is_selected:
