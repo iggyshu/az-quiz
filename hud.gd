@@ -49,10 +49,10 @@ func show_hard_question(question):
 
 
 func set_team(team):
-	if team == "blue":
+	if team == "Blue":
 		$TeamBlueLabel.visible = true
 		$TeamRedLabel.visible = false
-	elif team == "red":
+	elif team == "Red":
 		$TeamBlueLabel.visible = false
 		$TeamRedLabel.visible = true
 
