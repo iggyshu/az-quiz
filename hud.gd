@@ -38,6 +38,7 @@ func show_regular_question(question):
 	$SubmitButton.visible = true
 	$AnswerTextEdit.visible = true
 	$AnswerTextEdit.text = ""
+	$AnswerTextEdit.grab_focus()
 
 
 func show_hard_question(question):
