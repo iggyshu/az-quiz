@@ -1,6 +1,8 @@
 
 # Godot Quiz
 
+![Gameplay](docs/gameplay.gif)
+
 This is my take on the popular [AZ-kvíz](https://cs.wikipedia.org/wiki/AZ-kv%C3%ADz) game.
 With an intention to look into Godot and its capabilities, I decided to create a simple game that would be fun to play with friends.
 
