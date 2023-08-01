@@ -54,9 +54,9 @@ func check_path_exists(team: String) -> bool:
 			var visited_right_side = false
 			var visited_bottom_side = false
 			var visited = {}
-			var queue = [left_side_tile]
-			while queue:
-				var hex = queue.pop_at(0)
+			var frontier = [left_side_tile]
+			while frontier:
+				var hex = frontier.pop_at(0)
 				visited[hex] = true
 
 				if hex in [1, 3, 6, 10, 15, 21, 28]:
@@ -71,8 +71,7 @@ func check_path_exists(team: String) -> bool:
 					return true
 
 				for neighbor in adjacency_list[hex]:
-					if neighbor not in visited and neighbor not in queue:
+					if neighbor not in visited and neighbor not in frontier:
 						if neighbor in claimed_nodes and claimed_nodes[neighbor] == team:
-							queue.append(neighbor)
-
+							frontier.append(neighbor)
 	return false
