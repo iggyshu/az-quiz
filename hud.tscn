@@ -3,12 +3,13 @@
 [ext_resource type="FontFile" uid="uid://dxc71cs4m0d58" path="res://fonts/Xolonium-Regular.ttf" id="1_2vvjq"]
 [ext_resource type="Script" path="res://hud.gd" id="1_aaec2"]
 
-[sub_resource type="InputEventKey" id="InputEventKey_feoyo"]
+[sub_resource type="InputEventKey" id="InputEventKey_b0u6c"]
 device = -1
+pressed = true
 keycode = 4194309
 
 [sub_resource type="Shortcut" id="Shortcut_qql6e"]
-events = [SubResource("InputEventKey_feoyo")]
+events = [SubResource("InputEventKey_b0u6c")]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_aaec2")
