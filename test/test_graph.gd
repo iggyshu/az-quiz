@@ -87,3 +87,27 @@ func test_check_path_exists_complex_path_does_exist():
 
 	# Then there is a complete path (1, 3, 6, 9, 13, 12, 17, 24)
 	assert_true(result, "Should have a complete path")
+
+func test_check_path_exists_another_complex_path_does_exist():
+	# Given a graph and a complex path connecting three triangle sides
+	var graph = Graph.new()
+	graph.claim_node(3, "RED")
+	graph.claim_node(5, "RED")
+	graph.claim_node(8, "RED")
+	graph.claim_node(7, "RED")
+	graph.claim_node(13, "RED")
+	graph.claim_node(19, "RED")
+	graph.claim_node(26, "RED")
+	graph.claim_node(1, "BLUE")
+	graph.claim_node(2, "BLUE")
+	graph.claim_node(4, "BLUE")
+	graph.claim_node(6, "BLUE")
+	graph.claim_node(9, "BLUE")
+	graph.claim_node(18, "BLUE")
+	graph.claim_node(25, "BLUE")
+
+	# When I check for complete paths
+	var result = graph.check_path_exists("RED")
+
+	# Then there is a complete path (3, 5, 8, 7, 13, 19, 26)
+	assert_true(result, "Should have a complete path")
