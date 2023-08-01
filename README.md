@@ -16,3 +16,11 @@ My understanding of the game mechanics:
 1. If both teams answer, the tile becomes black, and the first team gets another turn.
 1. If a team selects a black tile, a closed yes/no question is displayed without any hints.
 1. If the team answers correctly, they claim the tile with their color, and the turn goes to the rival team. If they answer incorrectly, the rival team claims the tile, and the current team keeps the turn.
+
+## Running the Game
+
+Install [Godot 4.1](https://godotengine.org/) for your platform. Open the project, select the `main.tscn` scene and run it.
+
+## Running Tests
+
+There are tests written for the core game logic (pathfinding, etc.). The tests rely on the `GUT (Godot Unit Test)` add-on. To run the tests, configure the add-on with the `res://test` subdir and hit `Run all`.
