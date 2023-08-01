@@ -68,3 +68,7 @@ func _on_yes_button_pressed():
 
 func _on_no_button_pressed():
 	hard_question_answer.emit(false)
+
+
+func _on_answer_text_edit_text_submitted(new_text):
+	regular_question_answer.emit(new_text)

@@ -28,14 +28,15 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("1_2vvjq")
 theme_override_font_sizes/font_size = 24
+expand_to_text_length = true
 
 [node name="QuestionLabel" type="Label" parent="."]
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -144.0
-offset_bottom = -102.0
+offset_top = -168.0
+offset_bottom = -96.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -43,6 +44,8 @@ theme_override_fonts/font = ExtResource("1_2vvjq")
 theme_override_font_sizes/font_size = 24
 text = "Q: What planet is between Venus and Mars?"
 horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="SubmitButton" type="Button" parent="."]
 anchors_preset = 3
@@ -110,6 +113,7 @@ theme_override_fonts/font = ExtResource("1_2vvjq")
 theme_override_font_sizes/font_size = 24
 text = "Message"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="TeamBlueLabel" type="RichTextLabel" parent="."]
 offset_left = 20.0
@@ -132,6 +136,7 @@ theme_override_fonts/normal_font = ExtResource("1_2vvjq")
 theme_override_font_sizes/normal_font_size = 32
 text = "Red"
 
+[connection signal="text_submitted" from="AnswerTextEdit" to="." method="_on_answer_text_edit_text_submitted"]
 [connection signal="pressed" from="SubmitButton" to="." method="_on_submit_button_pressed"]
 [connection signal="pressed" from="YesButton" to="." method="_on_yes_button_pressed"]
 [connection signal="pressed" from="NoButton" to="." method="_on_no_button_pressed"]
