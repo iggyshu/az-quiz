@@ -24,3 +24,6 @@ Install [Godot 4.1](https://godotengine.org/) for your platform. Open the projec
 ## Running Tests
 
 There are tests written for the core game logic (pathfinding, etc.). The tests rely on the `GUT (Godot Unit Test)` add-on. To run the tests, configure the add-on with the `res://test` subdir and hit `Run all`.
+## Question Pools
+
+There are two separate question pools in JSON format inside `res://data` directory. The first pool contains open-ended questions, the second one contains yes/no questions.
