@@ -4,6 +4,7 @@ var is_team_colored = false
 var is_black = false
 var is_selected = false
 var value = 0
+var hint_text = ""
 
 signal selected
 
@@ -26,15 +27,21 @@ func set_value(value):
 func set_team_color(color):
 	is_team_colored = true
 	is_black = false
+	$NumberLabel.text = str(self.value)
 	$TileColor.play(color)
 
 func set_black():
 	is_black = true
 	is_selected = false
+	$NumberLabel.text = str(self.value)
 	$TileColor.play("black")
 
 func set_selected():
 	is_selected = true
+
+func set_hint_text(text):
+	hint_text = text
+	$NumberLabel.text = hint_text
 
 func _on_mouse_entered():
 	if not is_selected:

@@ -33,7 +33,6 @@ func _ready():
 func _process(delta):
 	pass
 
-
 func _generate_grid_ui():
 	var tile_num = 1
 
@@ -63,12 +62,12 @@ func _on_hex_tile_selected(hex):
 	if not hex.is_black:
 		# empty hex, proceed to ask a regular question
 		current_question = regular_questions.pop_at(-1)
+		hex.set_hint_text(current_question.hint_text)
 		$HUD.show_regular_question(current_question)
 	else:
 		# black hex was selected, display a hard question
 		current_question = hard_questions.pop_at(-1)
 		$HUD.show_hard_question(current_question)
-
 
 func claim_hex_tile():
 	current_hex.set_team_color(current_team.to_lower())
@@ -88,17 +87,14 @@ func switch_team():
 		current_team = BLUE
 	$HUD.set_team(current_team)
 
-
 func _parse_json(text):
 	return JSON.parse_string(text)
-
 
 func _read_json_file(file_path):
 	var file = FileAccess.open(file_path, FileAccess.READ)
 	var content_as_text = file.get_as_text()
 	var content_as_dictionary = _parse_json(content_as_text)
 	return content_as_dictionary
-
 
 func _on_hard_question_answer(answer: bool):
 	$HUD.hide_controls()
@@ -108,7 +104,6 @@ func _on_hard_question_answer(answer: bool):
 	else:
 		switch_team()
 		claim_hex_tile()
-
 
 func _on_regular_question_answer(answer: String):
 	# TODO: here we need to accept approximate answers
