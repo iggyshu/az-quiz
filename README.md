@@ -1,5 +1,5 @@
 
-# Godot Quiz
+# AZ Quiz
 
 ![Gameplay](docs/gameplay.gif)
 
